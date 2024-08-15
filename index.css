@@ -1,0 +1,118 @@
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    background-color: #0e0e0e;
+}
+
+#typeNext {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    height: 2rem;
+    width: 7rem;
+    margin-left: 1rem;
+}
+
+input[type="text"]
+{
+    font-size: 1.25rem;
+    font-family: 'DFKai-SB', Arial, sans-serif;
+}
+
+p {
+    color: white;
+    text-align: center;
+    font-size: 2.1875rem;
+    font-family: 'DFKai-SB', Arial, sans-serif;
+    margin: 0;
+}
+
+#title {
+    margin-bottom: 1.5rem;
+    font-size: 2.25rem;
+}
+
+#hint {
+    margin-top: 1rem;
+    font-size: 1rem; 
+}
+
+#answer {
+    font-size: 1rem;
+}
+
+#revealButton {
+    margin-left: 1rem;
+    height: 1.75rem;
+    width: 3.25rem;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'DFKai-SB', Arial, sans-serif;
+}
+
+#keymap {
+    font-size: 1rem;
+    font-family: 'DFKai-SB', Arial, sans-serif;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: center;
+    white-space: nowrap;
+    align-items: center; 
+    gap: 0.25rem;
+    margin-top: 1rem;
+
+    .row {
+        height: 2rem;
+        gap: 0.25rem; 
+    }
+
+    .r1 {
+        display: grid;
+        grid-template-columns: 0fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .r2 {
+        display: grid;
+        grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1rem;
+    }
+
+    .r3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .r4 {
+        display: grid;
+        grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2.75fr;
+    }
+
+    .keymapKey {
+        display: flex;
+        background-color: #151515;
+        color: white;
+        border-radius: 0.625rem;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 2rem;
+        height: 2rem;
+        position: relative;
+        transition: background-color 0.1s ease;
+    }
+
+    .keymapKey.pressed {
+       background-color: green;
+    }
+}
+
