@@ -25,14 +25,14 @@ input {
 input[type="text"]
 {
     font-size: 1.25rem;
-    font-family: 'DFKai-SB', Arial, sans-serif;
+    font-family: 'DFKai-SB', sans-serif;
 }
 
 p {
     color: white;
     text-align: center;
     font-size: 2.1875rem;
-    font-family: 'DFKai-SB', Arial, sans-serif;
+    font-family: 'DFKai-SB', sans-serif;
     margin: 0;
 }
 
@@ -57,13 +57,12 @@ p {
     color: white;
     background-color: green;
     cursor: pointer;
-    font-size: 1rem;
-    font-family: 'DFKai-SB', Arial, sans-serif;
+    font-family: 'DFKai-SB', sans-serif;    
 }
 
 #keymap {
     font-size: 1rem;
-    font-family: 'DFKai-SB', Arial, sans-serif;
+    font-family: 'DFKai-SB', sans-serif;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     justify-content: center;
