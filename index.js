@@ -1,505 +1,44 @@
-let database;
-let characters;
-const storedDatabase = localStorage.getItem('database');
-// console.log(storedDatabase);
-if (storedDatabase !== null && Object.keys(JSON.parse(storedDatabase)).length === 478) { 
-    database = JSON.parse(storedDatabase);
-    characters = Object.keys(database);
+// import fs from 'fs/promises'
+const content = [
+  {
+    title: "滕王閣序",
+    author: "王勃",
+    content:
+      "南昌故郡，洪都新府，星分翼軫，地接衡廬，襟三江而帶五湖，控蠻荊而引甌越。物華天寶，龍光射牛斗之墟；人傑地靈，徐孺下陳蕃之榻。雄州霧列，俊彩星馳，臺隍枕夷夏之交，賓主盡東南之美。都督閻公之雅望，棨戟遙臨；宇文新州之懿範，襜帷暫駐。十旬休暇，勝友如雲；千里逢迎，高朋滿座。騰蛟起鳳，孟學士之詞宗；紫電青霜，王將軍之武庫。家君作宰，路出名區；童子何知，躬逢勝餞。時維九月，序屬三秋。潦水盡而寒潭清，煙光凝而暮山紫。儼驂騑於上路，訪風景於崇阿；臨帝子之長洲，得仙人之舊館。層臺聳翠，上出重霄；飛閣翔丹，下臨無地。鶴汀鳧渚，窮島嶼之縈迴；桂殿蘭宮，即岡巒之體勢。披繡闥，俯雕甍，山原曠其盈視，川澤盱其駭矚。閭閻撲地，鐘鳴鼎食之家；舸艦彌津，青雀黃龍之軸。虹銷雨霽，彩徹雲衢。落霞與孤鶩齊飛，秋水共長天一色。漁舟唱晚，響窮彭蠡之濱；雁陣驚寒，聲斷衡陽之浦。遙吟甫暢，逸興遄飛。爽籟發而清風生，纖歌凝而白雲遏。睢園綠竹，氣凌彭澤之樽；鄴水朱華，光照臨川之筆。四美具，二難并。窮睇眄於中天，極娛遊於暇日。天高地迥，覺宇宙之無窮；興盡悲來，識盈虛之有數。望長安於日下，指吳會於雲間。地勢極而南溟深，天柱高而北辰遠。關山難越，誰悲失路之人？萍水相逢，盡是他鄉之客。懷帝閽而不見，奉宣室以何年？嗟乎！時運不齊，命途多舛；馮唐易老，李廣難封。屈賈誼於長沙，非無聖主；竄梁鴻於海曲，豈乏明時？所賴君子安貧，達人知命。老當益壯，寧移白首之心？窮且益堅，不墜青雲之志。酌貪泉而覺爽，處涸轍以猶歡。北海雖賒，扶搖可接；東隅已逝，桑榆非晚。孟嘗高潔，空餘報國之心；阮籍猖狂，豈效窮途之哭？勃三尺微命，一介書生，無路請纓，等終軍之弱冠；有懷投筆，慕宗慤之長風。捨簪笏於百齡，奉晨昬於萬里。非謝家之寶樹，接孟氏之芳鄰。他日趨庭，叨陪鯉對。今茲捧袂，喜託龍門。楊意不逢，撫凌雲而自惜；鍾期既遇，奏流水以何慚！嗚呼！勝地不常，盛筵難再；蘭亭已矣，梓澤丘墟。臨別贈言，幸承恩於偉餞；登高作賦，是所望於羣公。敢竭鄙誠，恭疏短引，一言均賦，四韻俱成。請灑潘江，各傾陸海云爾。",
+    link: "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/secondary-edu/lang/chi_chapter/P127.pdf",
+  },
+  {
+    title: "蘭亭集序",
+    author: "王羲之",
+    content:
+      "永和九年，歲在癸丑，暮春之初，會于會稽山陰之蘭亭，修禊事也。羣賢畢至，少長咸集。此地有崇山峻嶺，茂林修竹；又有清流激湍，映帶左右。引以為流觴曲水，列坐其次；雖無絲竹管絃之盛，一觴一詠，亦足以暢敍幽情。是日也，天朗氣清，惠風和暢；仰觀宇宙之大，俯察品類之盛，所以游目騁懷，足以極視聽之娛，信可樂也！夫人之相與，俯仰一世，或取諸懷抱，晤言一室之內；或因寄所託，放浪形骸之外。雖趨舍萬殊，靜躁不同；當其欣于所遇，暫得于己，快然自足，不知老之將至。及其所之既倦，情隨事遷，感慨係之矣。向之所欣，俛仰之間，以為陳迹，猶不能不以之興懷；況修短隨化，終期于盡。古人云︰「死生亦大矣」，豈不痛哉！每覽昔人興感之由，若合一契；未嘗不臨文嗟悼，不能喻之于懷。固知一死生為虛誕，齊彭殤為妄作。後之視今，亦猶今之視昔，悲夫！故列敍時人，錄其所述。雖世殊事異，所以興懷，其致一也。後之覽者，亦將有感於斯文。",
+    link: "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/secondary-edu/lang/chi_chapter/P122_202306.pdf",
+  },
+  {
+    title: "將進酒",
+    author: "李白",
+    content:
+      "君不見黃河之水天上來，奔流到海不復回！君不見高堂明鏡悲白髮，朝如青絲暮成雪。人生得意須盡歡，莫使金樽空對月！天生我材必有用，千金散盡還復來。烹羊宰牛且為樂，會須一飲三百杯。岑夫子，丹邱生，將進酒，君莫停！與君歌一曲，請君為我傾耳聽！鐘鼓饌玉不足貴，但願長醉不用醒！古來聖賢皆寂寞，唯有飲者留其名。陳王昔時宴平樂，斗酒十千恣歡謔。主人何為言少錢，徑須沽取對君酌！五花馬，千金裘，呼兒將出換美酒，與爾同銷萬古愁！",
+    link: "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/secondary-edu/lang/chi_chapter/P024_201704.pdf",
+  },
+];
+
+
+function init_content() {
+  try {
+    const randomNumber = Math.floor(Math.random() * 3);
+    choosenContent = content[randomNumber];
+
+    document.getElementById("title").textContent = choosenContent.title;
+    document.getElementById("author").textContent = choosenContent.author;
+    document.getElementById("content").textContent = choosenContent.content;
+    document.getElementById("link").href = choosenContent.link;
+  } catch (err) {
+    console.error("Error occurs when initializing content:", err);
+  }
 }
-else {
-    // console.log('database size: ' + Object.keys(JSON.parse(storedDatabase)).length)
-    // console.log('database is reloaded');
-    const DATABASE = { // some characters have more than one CangJie code, this database only include ~500 characters
-        一:	'm',
-        丁:	'mn',
-        丂:	'mvs',
-        七:	'p',
-        万:	'ms',
-        丈:	'jk',
-        三:	'mmm',
-        上:	'ym',
-        下:	'my',
-        丌:	'ml',
-        不:	'mf',
-        与:	'ysm',
-        丏:	'mlvs',
-        丐:	'myvs',
-        丑:	'ng',
-        丒:	'skm',
-        专:	'qni',
-        且:	'bm',
-        丕:	'mfm',
-        世:	'pt',
-        丗:	'tj',
-        丘:	'om',
-        丙:	'mob',
-        业:	'tc',
-        丛:	'oom',
-        东:	'kd',
-        丝:	'vvm',
-        丞:	'nem',
-        丟:	'mgi',
-        丠:	'lpm',
-        両:	'mub',
-        丢:	'hgi',
-        丣:	'mlls',
-        两:	'moob',
-        严:	'mtch',
-        並:	'ttc',
-        丧:	'gcv',
-        个:	'ol',
-        丫:	'cl',
-        丬:	'lim',
-        中:	'l',
-        丮:	'nq',
-        丯:	'qj',
-        丰:	'qj',
-        丱:	'vlllm',
-        串:	'll',
-        丳:	'llww',
-        临:	'lloa',
-        丵:	'tctj',
-        丸:	'kni',
-        丹:	'by',
-        为:	'iksi',
-        主:	'yg',
-        丼:	'tti',
-        丽:	'mbib',
-        丽:	'mmbib',
-        举:	'fcq',
-        乂:	'k',
-        乃:	'nhs',
-        久:	'no',
-        乇:	'hp',
-        么:	'hi',
-        义:	'ik',
-        之:	'ino',
-        乌:	'pvsm',
-        乍:	'os',
-        乎:	'hfd',
-        乏:	'hino',
-        乐:	'hvd',
-        乒:	'omh',
-        乓:	'omi',
-        乔:	'hkll',
-        乕:	'hqb',
-        乖:	'hjlp',
-        乗:	'hjtd',
-        乘:	'hdlp',
-        乙:	'n',
-        乜:	'ps',
-        九:	'kn',
-        乞:	'on',
-        也:	'pd',
-        习:	'sim',
-        乡:	'vvh',
-        乢:	'uu',
-        乣:	'viu',
-        乤:	'myn',
-        乥:	'hcn',
-        书:	'ids',
-        乧:	'yjn',
-        乨:	'iru',
-        乩:	'yru',
-        乪:	'nw',
-        乫:	'krn',
-        乬:	'ssn',
-        乭:	'mrn',
-        乮:	'hln',
-        乯:	'hfdn',
-        买:	'nyk',
-        乱:	'hru',
-        乲:	'ion',
-        乲:	'mon',
-        乳:	'bdu',
-        乴:	'qln',
-        乵:	'yju',
-        乶:	'ibn',
-        乷:	'ehn',
-        乸:	'pdwyi',
-        乹:	'jju',
-        乺:	'hln',
-        乻:	'yyn',
-        乼:	'egn',
-        乽:	'jan',
-        乾:	'jjon',
-        乿:	'bfu',
-        亀:	'nwlu',
-        亁:	'jjon',
-        亂:	'bbu',
-        亃:	'fqu',
-        亄:	'gtu',
-        了:	'nn',
-        予:	'ninn',
-        争:	'nsd',
-        亊:	'jfln',
-        事:	'jlln',
-        二:	'mm',
-        亍:	'mmn',
-        于:	'md',
-        亏:	'mmvs',
-        亐:	'mjs',
-        云:	'mmi',
-        互:	'mvnm',
-        亓:	'mml',
-        五:	'mdm',
-        井:	'tt',
-        亖:	'mmmm',
-        亗:	'umm',
-        亘:	'mam',
-        亙:	'mbm',
-        亚:	'mtc',
-        些:	'ypmm',
-        亜:	'mllm',
-        亝:	'iiim',
-        亞:	'mllm',
-        亟:	'mem',
-        亟:	'nem',
-        亡:	'yv',
-        亢:	'yhn',
-        交:	'yck',
-        亥:	'yvho',
-        亦:	'ylnc',
-        产:	'yth',
-        亨:	'yrnn',
-        亩:	'yw',
-        亪:	'ycmo',
-        享:	'yrnd',
-        京:	'yrf',
-        亭:	'yrbn',
-        亮:	'yrbn',
-        亮:	'yrbu',
-        亯:	'yra',
-        亰:	'yaf',
-        亱:	'yoam',
-        亲:	'ytd',
-        亳:	'yrbp',
-        亴:	'yrbn',
-        亵:	'yqiv',
-        亶:	'ywrm',
-        亷:	'yhxc',
-        亸:	'ydcwj',
-        亹:	'yhbm',
-        人:	'o',
-        亽:	'oi',
-        亾:	'vo',
-        亿:	'on',
-        什:	'oj',
-        仁:	'omm',
-        仂:	'oks',
-        仃:	'omn',
-        仄:	'mo',
-        仅:	'oe',
-        仆:	'oy',
-        仇:	'okn',
-        仈:	'oc',
-        仉:	'ohn',
-        今:	'oin',
-        介:	'oll',
-        仌:	'oo',
-        仍:	'onhs',
-        从:	'oo',
-        仏:	'oi',
-        仐:	'oj',
-        仑:	'op',
-        仒:	'oy',
-        仓:	'osu',
-        仔:	'ond',
-        仕:	'og',
-        他:	'opd',
-        仗:	'ojk',
-        付:	'odi',
-        仙:	'ou',
-        仚:	'ou',
-        仛:	'ohp',
-        仜:	'om',
-        仝:	'om',
-        仞:	'oshi',
-        仟:	'ohj',
-        仠:	'omj',
-        仡:	'oon',
-        仢:	'opi',
-        代:	'oip',
-        令:	'oini',
-        以:	'vio',
-        仦:	'of',
-        仧:	'ymo',
-        仨:	'ommm',
-        仩:	'oym',
-        仪:	'oik',
-        仫:	'ohi',
-        们:	'olis',
-        仭:	'osk',
-        仮:	'ohe',
-        仯:	'ofh',
-        仰:	'ohvl',
-        仱:	'ooin',
-        仲:	'ol',
-        仳:	'opp',
-        仴:	'ob',
-        仵:	'ooj',
-        件:	'ohq',
-        价:	'ooll',
-        仸:	'ohk',
-        仹:	'oqj',
-        仺:	'osm',
-        仺:	'osm',
-        任:	'ohg',
-        仼:	'omg',
-        份:	'ocsh',
-        仾:	'omvm',
-        仿:	'oyhs',
-        伀:	'oci',
-        企:	'oylm',
-        伂:	'ojb',
-        伃:	'onin',
-        伄:	'onl',
-        伅:	'opu',
-        伆:	'ophh',
-        伇:	'ohne',
-        伈:	'op',
-        伉:	'oyhn',
-        伊:	'osk',
-        伋:	'onhe',
-        伌:	'omsu',
-        伍:	'omdm',
-        伎:	'oje',
-        伏:	'oik',
-        伐:	'oi',
-        休:	'od',
-        伒:	'ohml',
-        伓:	'omf',
-        伔:	'obhu',
-        伕:	'oqo',
-        伖:	'oke',
-        众:	'ooo',
-        优:	'oiku',
-        伙:	'of',
-        会:	'ommi',
-        伛:	'osk',
-        伜:	'oknj',
-        伝:	'ommi',
-        伞:	'ofj',
-        伟:	'oqs',
-        传:	'oqni',
-        伡:	'okq',
-        伢:	'omvh',
-        伣:	'obhu',
-        伤:	'ooks',
-        伥:	'opo',
-        伦:	'oop',
-        伧:	'oosu',
-        伨:	'opmm',
-        伩:	'oyk',
-        伪:	'oiks',
-        伫:	'ojm',
-        伬:	'oso',
-        伭:	'oyvi',
-        伮:	'ove',
-        伯:	'oha',
-        估:	'ojr',
-        伱:	'oof',
-        伲:	'osp',
-        伳:	'opt',
-        伴:	'ofq',
-        伵:	'owc',
-        伶:	'ooii',
-        伷:	'olw',
-        伸:	'olwl',
-        伹:	'obm',
-        伺:	'osmr',
-        伻:	'omfj',
-        似:	'ovio',
-        伽:	'oksr',
-        伾:	'omfm',
-        伿:	'orc',
-        佀:	'orlr',
-        佁:	'oir',
-        佂:	'omym',
-        佃:	'ow',
-        佄:	'otm',
-        佅:	'ojd',
-        但:	'oam',
-        佇:	'ojmn',
-        佈:	'oklb',
-        佉:	'ogi',
-        佊:	'odhe',
-        佋:	'oshr',
-        佌:	'oymp',
-        位:	'oyt',
-        低:	'ohpm',
-        低:	'ohvi',
-        住:	'oyg',
-        佐:	'okm',
-        佑:	'okr',
-        佒:	'olbk',
-        体:	'odm',
-        佔:	'oyr',
-        何:	'omnr',
-        佖:	'oph',
-        佗:	'ojp',
-        佘:	'ommf',
-        余:	'omd',
-        佚:	'ohqo',
-        佛:	'olln',
-        作:	'oos',
-        佝:	'opr',
-        佞:	'ommv',
-        佟:	'ohey',
-        你:	'onf',
-        佡:	'oou',
-        佢:	'oss',
-        佣:	'obq',
-        佤:	'omvn',
-        佥:	'omfm',
-        佦:	'omr',
-        佧:	'oymy',
-        佨:	'opru',
-        佩:	'ohnb',
-        佪:	'owr',
-        佫:	'oher',
-        佬:	'ojkp',
-        佭:	'oheq',
-        佮:	'oomr',
-        佯:	'otq',
-        佰:	'oma',
-        佱:	'ommm',
-        佲:	'onir',
-        佳:	'ogg',
-        佴:	'osj',
-        併:	'ott',
-        佶:	'ogr',
-        佷:	'oav',
-        佸:	'ohjr',
-        佹:	'onmu',
-        佺:	'oomg',
-        佻:	'olmo',
-        佼:	'oyck',
-        佽:	'ommo',
-        佾:	'ocb',
-        使:	'ojlk',
-        侀:	'omtn',
-        侁:	'ohgu',
-        侂:	'oihp',
-        侃:	'orhu',
-        侄:	'omig',
-        侅:	'oyvo',
-        來:	'doo',
-        侇:	'okn',
-        侈:	'onin',
-        侉:	'okms',
-        侊:	'ofmu',
-        例:	'omnn',
-        侌:	'oini',
-        侍:	'ogdi',
-        侎:	'ofd',
-        侏:	'ohjd',
-        侐:	'ohbt',
-        侑:	'okb',
-        侒:	'ojv',
-        侓:	'olq',
-        侔:	'oihq',
-        侕:	'ombl',
-        侖:	'ombt',
-        侗:	'obmr',
-        侘:	'ojhp',
-        侙:	'oipm',
-        侚:	'opa',
-        供:	'otc',
-        侜:	'ohby',
-        依:	'oyhv',
-        侞:	'ovr',
-        侟:	'okld',
-        侠:	'okt',
-        価:	'omlw',
-        侢:	'omgb',
-        侣:	'orr',
-        侤:	'ojks',
-        侥:	'ojpu',
-        侦:	'oybo',
-        侧:	'obon',
-        侨:	'ohkl',
-        侩:	'oomi',
-        侪:	'oykl',
-        侫:	'oyvv',
-        侬:	'ohbv',
-        侭:	'osoy',
-        侮:	'oowy',
-        侯:	'onmk',
-        侰:	'oskr',
-        侱:	'orhg',
-        侲:	'ommv',
-        侳:	'ooog',
-        侴:	'omnn',
-        侵:	'osme',
-        侶:	'orhr',
-        侷:	'ossr',
-        侸:	'omrt',
-        侹:	'onkg',
-        侺:	'ouon',
-        侻:	'ocru',
-        侼:	'ojbd',
-        侽:	'owks',
-        侾:	'ojkd',
-        便:	'omlk',
-        俀:	'obv',
-        俁:	'orvk',
-        係:	'ohvf',
-        促:	'oryo',
-        俄:	'ohqi',
-        俅:	'oije',
-        俆:	'oomd',
-        俇:	'okhg',
-        俈:	'ohgr',
-        俉:	'ommr',
-        俊:	'oice',
-        俋:	'orau',
-        俌:	'oijb',
-        俍:	'oiav',
-        俎:	'oobm',
-        俏:	'ofb',
-        俐:	'ohdn',
-        俑:	'onib',
-        俒:	'ojmu',
-        俓:	'omvm',
-        俔:	'obuu',
-        俕:	'ojd',
-        俖:	'omfr',
-        俗:	'ocor',
-        俘:	'obnd',
-        俙:	'okkb',
-        俚:	'owg',
-        俛:	'onau',
-        俜:	'olws',
-        保:	'ord',
-        俞:	'ombn',
-        俟:	'oiok',
-        俠:	'okoo',
-        信:	'oymr',
-        俢:	'oheh',
-        俣:	'ormk',
-        俤:	'ocnh',
-        俥:	'ojwj',
-        俦:	'oqki',
-        俧:	'ogp',
-        俨:	'omth',
-        俩:	'omob',
-        俪:	'ombb',
-        俫:	'odt',
-        俬:	'ohdi',
-        俭:	'oomm',
-        修:	'olhh',
-        修:	'oloh',
-        俯:	'oioi',
-        俰:	'ohdr',
-        俱:	'obmc',
-        俲:	'oyks',
-        俳:	'olmy',
-    }
-    database = DATABASE;
-    characters = Object.keys(DATABASE);
-    localStorage.setItem('database', JSON.stringify(DATABASE))
-}
+
+init_content();
 
 const chart = {
     q : '手',
@@ -530,75 +69,64 @@ const chart = {
     m : '一'
 }
 
-let randomCharacter = '';
 
-const inputBox = document.getElementById('inputBox');
-const character = document.getElementById('character');
-const answer = document.getElementById('answer');
-const revealButton = document.getElementById('revealButton'); 
+document.addEventListener("compositionupdate", (event) => {
+  if (event.data.length > sessionStorage.getItem("prev")) {
+    sessionStorage.setItem("prev", event.data.length);
+    // console.log('>', sessionStorage.getItem('prev'));
+  } else {
+    sessionStorage.setItem("prev", event.data.length);
+    // console.log('< or =', sessionStorage.getItem('prev'));
+    return;
+  }
 
-if (!sessionStorage.getItem('prev')) {
-    // console.log('start session storage');
-    sessionStorage.setItem('prev', 0);
-}
-
-document.addEventListener('compositionupdate', (event) => {
-    if (event.data.length > sessionStorage.getItem('prev')) {
-        sessionStorage.setItem('prev', event.data.length);
-        // console.log('>', sessionStorage.getItem('prev'));
-    }
-    else {
-        sessionStorage.setItem('prev', event.data.length);
-        // console.log('< or =', sessionStorage.getItem('prev'));
-        return;
-    }
-        
-    const lastCharacter = event.data[event.data.length - 1];
-    const pressedKey = Object.keys(chart).find(key => chart[key] === lastCharacter);
-    const virtualKey = document.querySelector(`[data-key="${pressedKey}"]`);
-    if (virtualKey) {
-        virtualKey.classList.add('pressed');
-        setTimeout(() => {
-            virtualKey.classList.remove('pressed');
-        }, 100)
-    }
+  const lastCharacter = event.data[event.data.length - 1];
+  const pressedKey = Object.keys(chart).find(
+    (key) => chart[key] === lastCharacter
+  );
+  const virtualKey = document.querySelector(`[data-key="${pressedKey}"]`);
+  if (virtualKey) {
+    virtualKey.classList.add("pressed");
+    setTimeout(() => {
+      virtualKey.classList.remove("pressed");
+    }, 100);
+  }
 });
 
+// inputBox.addEventListener("keyup", (event) => {
+//   if (event.key === "Enter") {
+//     check();
+//   }
+// });
 
-inputBox.addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {
-       check();
-    }
-})
+// revealButton.addEventListener('click', () => {
+//     answer.innerText = database[randomCharacter].split('').map(letter => chart[letter]).join('');
+//     answer.style.display === 'none'
+//     ?
+//     answer.style.display = 'block'
+//     :
+//     answer.style.display = 'none';
+// })
 
-revealButton.addEventListener('click', () => {
-    answer.innerText = database[randomCharacter].split('').map(letter => chart[letter]).join('');
-    answer.style.display === 'none'
-    ?
-    answer.style.display = 'block'
-    :
-    answer.style.display = 'none';
-})
+// function check() {
+//     if (inputBox.value === character.innerText) {
+//         generator();
+//         inputBox.value = '';
+//         answer.style.display = 'none';
+//     }
+// }
 
-function check() {
-    if (inputBox.value === character.innerText) {
-        generator();
-        inputBox.value = '';
-        answer.style.display = 'none';
-    } 
-}
+// function generator() {
+//    randomCharacter = characters[Math.floor(Math.random() * characters.length)];
+//    character.innerText = randomCharacter;
+// }
 
-function generator() {
-   randomCharacter = characters[Math.floor(Math.random() * characters.length)];
-   character.innerText = randomCharacter;
-}
+// generator();
 
-generator();
+// function setDynamicVH() {
+//   const vh = window.innerHeight * 0.01;
+//   document.documentElement.style.setProperty('--vh', `${vh}px`);
+// }
 
-function setDynamicVH() {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-
-window.addEventListener('resize', setDynamicVH);
-setDynamicVH();
+// window.addEventListener('resize', setDynamicVH);
+// setDynamicVH();
