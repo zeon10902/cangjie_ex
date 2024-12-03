@@ -69,8 +69,7 @@ const chart = {
     m : '一'
 }
 
-
-document.addEventListener("compositionupdate", (event) => {
+function handleEvent(event) {
   if (event.data.length > sessionStorage.getItem("prev")) {
     sessionStorage.setItem("prev", event.data.length);
     // console.log('>', sessionStorage.getItem('prev'));
@@ -91,7 +90,35 @@ document.addEventListener("compositionupdate", (event) => {
       virtualKey.classList.remove("pressed");
     }, 100);
   }
-});
+}
+
+const inputElement = document.getElementById("inputBox");
+inputElement.addEventListener("compositionstart", handleEvent);
+inputElement.addEventListener("compositionupdate", handleEvent);
+inputElement.addEventListener("compositionend", handleEvent);
+
+// document.addEventListener("compositionupdate", (event) => {
+//   if (event.data.length > sessionStorage.getItem("prev")) {
+//     sessionStorage.setItem("prev", event.data.length);
+//     // console.log('>', sessionStorage.getItem('prev'));
+//   } else {
+//     sessionStorage.setItem("prev", event.data.length);
+//     // console.log('< or =', sessionStorage.getItem('prev'));
+//     return;
+//   }
+
+//   const lastCharacter = event.data[event.data.length - 1];
+//   const pressedKey = Object.keys(chart).find(
+//     (key) => chart[key] === lastCharacter
+//   );
+//   const virtualKey = document.querySelector(`[data-key="${pressedKey}"]`);
+//   if (virtualKey) {
+//     virtualKey.classList.add("pressed");
+//     setTimeout(() => {
+//       virtualKey.classList.remove("pressed");
+//     }, 100);
+//   }
+// });
 
 // inputBox.addEventListener("keyup", (event) => {
 //   if (event.key === "Enter") {
