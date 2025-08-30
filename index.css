@@ -1,100 +1,98 @@
 body {
-  padding: 0;
-  margin: 0;
-  /* min-height: calc(var(--vh, 1vh) * 100); */
-  min-height: 100vh;
-  max-width: 100%;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Noto Serif TC', serif;
+	padding: 0;
+	margin: 0;
+	/* min-height: calc(var(--vh, 1vh) * 100); */
+	min-height: 100vh;
+	max-width: 100%;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: "Noto Serif TC", serif;
 }
 
 #typeNext {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
-  #character {
-    font-size: 5rem;
-    color: green;
-    margin-bottom: 1rem;
-  }
+	#character {
+		font-size: 5rem;
+		color: green;
+		margin-bottom: 1rem;
+	}
 
-  input {
-    height: 2rem;
-    width: 7rem;
-    margin-bottom: 1rem;
-  }
+	input {
+		height: 2rem;
+		width: 7rem;
+		margin-bottom: 1rem;
+	}
 
-  input[type="text"] {
-    font-size: 1.25rem;
-    font-family: var(--ui);
-  }
+	input[type="text"] {
+		font-size: 1.25rem;
+		font-family: var(--ui);
+	}
 
-  p {
-    text-align: center;
-    margin: 0;
-    padding: 0;
-  }
+	p {
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
 }
 
-
-
 #keymap {
-  font-size: 1rem;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  justify-content: center;
-  white-space: nowrap;
-  align-items: center;
-  gap: 0.25rem;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
+	font-size: 1rem;
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+	justify-content: center;
+	white-space: nowrap;
+	align-items: center;
+	gap: 0.25rem;
+	margin-top: 1rem;
+	margin-bottom: 3rem;
 
-  .row {
-    height: 2em;
-    gap: 0.25rem;
-  }
+	.row {
+		height: 2em;
+		gap: 0.25rem;
+	}
 
-  .r1 {
-    display: grid;
-    grid-template-columns: 0fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  }
+	.r1 {
+		display: grid;
+		grid-template-columns: 0fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	}
 
-  .r2 {
-    display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1em;
-  }
+	.r2 {
+		display: grid;
+		grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1em;
+	}
 
-  .r3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  }
+	.r3 {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	}
 
-  .r4 {
-    display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2.75fr;
-  }
+	.r4 {
+		display: grid;
+		grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2.75fr;
+	}
 
-  .keymapKey {
-    display: flex;
-    background-color: #151515;
-    color: #ffffff;
-    border-radius: 0.625rem;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    width: 2em;
-    height: 2em;
-    position: relative;
-    transition: background-color 0.1s ease;
-  }
+	.keymapKey {
+		display: flex;
+		background-color: #151515;
+		color: #ffffff;
+		border-radius: 0.625rem;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		width: 2em;
+		height: 2em;
+		position: relative;
+		transition: background-color 0.1s ease;
+	}
 
-  .keymapKey.pressed {
-    background-color: green;
-  }
+	.keymapKey.pressed {
+		background-color: green;
+	}
 }
